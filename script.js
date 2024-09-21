@@ -38,8 +38,6 @@ function unescapeHTML(text) {
 function cleanText(text) {
     text = text.replace(/<div>/g, '');
     text = text.replace(/<\/div>/g, '');
-    text = text.replace(/<p>/g, '\n');
-    text = text.replace(/<\/p>/g, '\n');
     text = text.replace(/<br\s*[/]?>/g, '\n');
     text = text.replace(/<[^>]*>/g, '');
     text = text.replace(/ {2,}/g, ' ');
@@ -77,7 +75,8 @@ function createModal() {
 }
 
 async function downloadNovel(title, episodeLinks, startEpisode) {
-    let novelText = `${title}\n\n`;
+    let novelText = `<?xml version="1.0" encoding="utf-8"?>\n<!DOCTYPE html>\n<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">\n<head><title></title></head>\n<body>\n
+<h1 class="sigil_not_in_toc"> ${title}</h1>\n<p></p>`;
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
     const {modal, modalContent} = createModal();
     document.body.appendChild(modal);
@@ -133,7 +132,7 @@ ${episodeUrl}.
                 continue;
             }
         }
-        novelText +='\n ===\n'
+        novelText +='<h2 class="sigil_not_in_toc">===</h2>'
         novelText += episodeContent;
         
 
@@ -153,8 +152,8 @@ ${episodeUrl}.
 
     document.body.removeChild(modal);
 
-    const fileName = `${title}(${startEpisode}~${episodeLinks.length}).txt`;
-    const blob = new Blob([novelText], {type: 'text/plain'});
+    const fileName = `${title}(${startEpisode}~${episodeLinks.length}).html`;
+    const blob = new Blob([novelText], {type: 'text/html'});
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = fileName;
