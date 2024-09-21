@@ -78,7 +78,7 @@ function createModal() {
 
 async function downloadNovel(title, episodeLinks, startEpisode) {
     let novelText = `<?xml version="1.0" encoding="utf-8"?>\n<!DOCTYPE html>\n<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">\n<head><title></title></head>\n<body>\n
-<h1 class="sigil_not_in_toc"> ${title}</h1>\n<p></p>`;
+<hr class="sigil_split_marker" /><h1> ${title}</h1>\n<p></p>`;
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
     const {modal, modalContent} = createModal();
     document.body.appendChild(modal);
@@ -134,7 +134,7 @@ ${episodeUrl}.
                 continue;
             }
         }
-        novelText +='<h2 class="sigil_not_in_toc">===</h2>'
+        novelText +='<hr class="sigil_split_marker" /><h2>===</h2>'
         novelText += episodeContent;
         
 
