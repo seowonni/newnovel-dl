@@ -27,10 +27,10 @@ function unescapeHTML(text) {
         '&lsquo;': '‘', '&rsquo;': '’', '&ldquo;': '“', '&rdquo;': '”'
     };
 
-    Object.entries(entities).forEach(([entity, replacement]) => {
-        const regex = new RegExp(entity, 'g');
-        text = text.replace(regex, replacement);
-    });
+    //Object.entries(entities).forEach(([entity, replacement]) => {
+        //const regex = new RegExp(entity, 'g');
+        //text = text.replace(regex, replacement);
+    //});
 
     return text;
 }
