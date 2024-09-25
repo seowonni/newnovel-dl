@@ -36,10 +36,10 @@ function unescapeHTML(text) {
 }
 
 function cleanText(text) {
-    //text = text.replace(/<div>/g, '');
-    //text = text.replace(/<\/div>/g, '');
-    //text = text.replace(/<p>/g, '\n');
-    //text = text.replace(/<\/p>/g, '\n');
+    text = text.replace(/<div>/g, '');
+    text = text.replace(/<\/div>/g, '');
+    text = text.replace(/<p>/g, '\n');
+    text = text.replace(/<\/p>/g, '\n');
     text = text.replace(/<br\s*[/]?>/g, '\n');
     text = text.replace(/<[^>]*>/g, '');
     text = text.replace(/ {2,}/g, ' ');
