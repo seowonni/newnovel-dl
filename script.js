@@ -134,7 +134,7 @@ ${episodeUrl}.
                 continue;
             }
         }
-        novelText +='<hr class="sigil_split_marker" /><h2>===</h2>'
+        novelText +='<hr class="sigil_split_marker" />'
         novelText += episodeContent;
         
 
