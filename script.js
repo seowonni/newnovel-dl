@@ -167,7 +167,7 @@ function extractTitle() {
     return titleElement ? titleElement.textContent.trim() : null;
 }
 function extractImage(){
-    const igElement=document.querySelector("#at-main > div.view-wrap > section > article > div.view-title > div > div > div.col-sm-4 > div > div > img")
+    const igElement = const imageElement = document.querySelector("#at-main > div.view-wrap > section > article > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div.col-sm-4 > div > div > img");
     return igElement;
 }
 
