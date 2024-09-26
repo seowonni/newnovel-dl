@@ -174,7 +174,7 @@ function extractImage(){
                 XPathResult.FIRST_ORDERED_NODE_TYPE,
                 null
             ).singleNodeValue;
-    return igElement;
+    return igElement.src;
 }
 
 function extractEpisodeLinks() {
