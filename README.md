@@ -1,5 +1,5 @@
 
-# novel-dl
+# newnovel-dl(html 다운로드)
 
 browser-based novel downloader for 📖🐰 (stable)
   
