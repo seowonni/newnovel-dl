@@ -76,9 +76,9 @@ function createModal() {
     return {modal, modalContent};
 }
 
-async function downloadNovel(title, episodeLinks, startEpisode) {
+async function downloadNovel(img, title, episodeLinks, startEpisode) {
     let novelText = `<?xml version="1.0" encoding="utf-8"?>\n<!DOCTYPE html>\n<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">\n<head><title></title></head>\n<body>\n
-<hr class="sigil_split_marker" /><h1> ${title}</h1>\n<p></p>`;
+<h1> ${title}</h1>\n ${img} `;
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
     const {modal, modalContent} = createModal();
     document.body.appendChild(modal);
@@ -166,6 +166,10 @@ function extractTitle() {
     const titleElement = document.evaluate('//*[@id="content_wrapper"]/div[1]/span', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     return titleElement ? titleElement.textContent.trim() : null;
 }
+function extractImage(){
+    const igElement = const imageElement = document.querySelector("#at-main > div.view-wrap > section > article > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div.col-sm-4 > div > div > img");
+    return igElement;
+}
 
 function extractEpisodeLinks() {
     const episodeLinks = [];
@@ -205,6 +209,7 @@ async function runCrawler() {
     }
 
     const title = extractTitle();
+    const img= extractImage();
 
     if (!title) {
         console.log('Failed to extract the novel title.');
@@ -247,7 +252,7 @@ async function runCrawler() {
 
     console.log(`Task Appended: Preparing to download ${title} starting from episode ${startEpisodeNumber}`);
 
-    downloadNovel(title, allEpisodeLinks, startEpisodeNumber);
+    downloadNovel(img,title, allEpisodeLinks, startEpisodeNumber);
 }
 
 runCrawler();
