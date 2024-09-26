@@ -76,9 +76,9 @@ function createModal() {
     return {modal, modalContent};
 }
 
-async function downloadNovel(img, title, episodeLinks, startEpisode) {
+async function downloadNovel(title, episodeLinks, startEpisode) {
     let novelText = `<?xml version="1.0" encoding="utf-8"?>\n<!DOCTYPE html>\n<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">\n<head><title></title></head>\n<body>\n
-<h1> ${title}</h1>\n ${img} `;
+<h1> ${title}</h1>\n `;
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
     const {modal, modalContent} = createModal();
     document.body.appendChild(modal);
@@ -209,7 +209,7 @@ async function runCrawler() {
     }
 
     const title = extractTitle();
-    const img= extractImage();
+    //const img= extractImage();
 
     if (!title) {
         console.log('Failed to extract the novel title.');
