@@ -167,7 +167,13 @@ function extractTitle() {
     return titleElement ? titleElement.textContent.trim() : null;
 }
 function extractImage(){
-    const igElement = const imageElement = document.querySelector("#at-main > div.view-wrap > section > article > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div.col-sm-4 > div > div > img");
+    const igElement = document.evaluate(
+                '/html/body/div[1]/div/div[2]/div[3]/div/div[1]/div[1]/div[2]/section/article/div[1]/div/div/div[1]/div/div/img',
+                document,
+                null,
+                XPathResult.FIRST_ORDERED_NODE_TYPE,
+                null
+            ).singleNodeValue;
     return igElement;
 }
 
