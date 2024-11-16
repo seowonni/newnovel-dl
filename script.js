@@ -135,7 +135,7 @@ ${episodeUrl}.
             }
         }
         novelText +='<hr class="sigil_split_marker" />'
-        novelText += `<p>${episodeContent}</p>\n`
+        novelText += episodeContent
         
 
         const progress = ((startingIndex - i + 1) / (startingIndex + 1)) * 100;
